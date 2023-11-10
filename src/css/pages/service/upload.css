@@ -1,0 +1,87 @@
+.uploadContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 1100px;
+}
+
+.uploadContainer .uploadInfoBox {
+    padding: 50px 0;
+}
+
+.uploadContainer .uploadInfoBox .uploadInfoTitle {   
+    margin-bottom: 50px;
+    margin-top: 10px;
+}
+
+.uploadContainer .uploadInfoBox .uploadInfoTitle p {
+    color: #30A6E8;
+    font-size: 36px;
+    font-weight: 600;
+}
+
+.uploadContainer .uploadInfoBox .uploadInfoSub {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 2.3em;
+}
+
+.uploadContainer .uploadInfoBox .uploadInfoSub p span {
+    color: #FF0000;
+}
+
+.uploadImageContainer {
+    width: 700px;
+    height: 350px;
+    border-radius: 24px;
+    border: 2px solid #E6E6E6;
+    background: #F6F6F6;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    padding: 0 20px;
+    cursor: pointer;
+}
+
+.uploadImageContainer.active{
+    opacity: 0.5;
+}
+
+.uploadImageContainer .uploadInput {
+    display: none;
+}
+
+.uploadImageContainer .uploadBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    pointer-events: none;
+}
+
+.uploadImageContainer .uploadBox p {
+    margin-top :35px;
+    border-radius: 24px;
+    background: #30A6E8;
+    color: #FFF;
+    width: 350px;
+    height: 60px;
+    font-size: 28px;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.uploadBtnBox {
+    width: 1100px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.preview {
+    max-width: 250px;
+    max-height: 250px;
+}

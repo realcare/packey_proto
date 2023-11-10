@@ -1,0 +1,73 @@
+.flowContainer {
+    width: 1100px;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    margin: 0 auto;
+}
+.applyStep {
+    background-color:#30A6E8 !important;
+    color: #FFFFFF;
+   }
+
+.flowItemBox {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+}
+   
+.flowItemBox .circle {
+    position: relative;
+    border-radius: 50%;
+    background-color: #D2D2D2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:50px;
+    height: 50px;
+    z-index: 2;
+    display: flex;
+}
+
+.flowItemBox .circle p {
+    font-size: 32px;
+    font-weight: 500;
+    
+}
+
+.flowItemBox .flowTitle {
+    margin-top: 10px;
+}
+
+.flowItemBox .flowTitle p {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.flowLineContainer {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 0;
+    width: 100%;
+}
+.flowLineContainer .flowLineBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 0;
+    height : 50px;
+    width: 95%;
+    margin-left: 25px;
+
+}
+.flowLine {
+    border: 2px solid #D2D2D2;
+    flex: 1;
+} 
+
+.borderBlue {
+    border-color:#30A6E8;
+}

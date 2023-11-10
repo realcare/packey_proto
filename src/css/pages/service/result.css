@@ -1,0 +1,77 @@
+.resultContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    gap: 35px;
+}
+
+.resultContainer .resultTitle {
+    font-size: 24px;
+    font-weight: 600;
+    margin-top: 45px;
+}
+
+.resultContainer .resultItemContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.resultContainer .resultItemContainer .resultItemBox {
+    flex: 2;
+    width: 335px;
+    padding: 35px 25px 50px 25px;
+    border-radius: 24px;
+    border: 2px solid #E6E6E6;
+    background: #F6F6F6;
+}
+
+.resultContainer .resultItemContainer .resultItemBox .resultItemTitle {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 35px;
+}
+
+.resultContainer .resultItemContainer .resultItemBox .resultItem {
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.resultContainer .resultItemContainer .resultItemBox .resultItem .resultItemTime {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    width: 100%;
+    font-weight: 600;
+}
+
+.resultContainer .resultItemContainer .resultItemBox .resultItem img {
+    width: 315px;
+    height: 220px;
+}
+
+.resultContainer .resultItemContainer .resultItemBox .resultItemBtnBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.resultContainer .resultItemContainer .resultItemBox .resultItemBtnBox button {
+    cursor: pointer;
+    position: relative;
+    border: 0;
+    padding: 15px 25px;
+    display: inline-block;
+    text-align: center;
+    color: white;
+    background-color: #30A6E8;
+    font-weight: 600;
+    font-size: 18px;
+    border-radius: 10px;
+}

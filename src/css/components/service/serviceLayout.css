@@ -1,0 +1,8 @@
+.serviceContainer {
+        height: 643px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: column;
+        padding: 50px 0;
+}

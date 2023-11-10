@@ -1,0 +1,74 @@
+.emailContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 1100px;
+}
+
+.emailContainer .emailInfoBox .emailInfoTitle {   
+    margin-bottom: 30px;
+    margin-top: 10px;
+}
+
+.emailContainer .emailInfoBox .emailInfoTitle p {
+    color: #30A6E8;
+    font-size: 36px;
+    font-weight: 600;
+}
+
+.emailContainer .emailInfoBox .emailInfoSub {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.5em;
+}
+
+.emailContainer .emailInputBox {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+}
+
+.emailContainer .emailInputBox .emailInputTitle {
+    border-radius: 24px;
+    border: 2px solid #E6E6E6;
+    background: rgba(48, 166, 232, 0.60);
+    width: 93px;
+    height: 55px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.emailContainer .emailInputBox .emailInputTitle p {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.emailContainer .emailInputBox .emailInput {
+    width: 600px;
+    height: 55px;
+    border-radius: 24px;
+    border: 2px solid #E6E6E6;
+    background: rgba(255, 255, 255, 0.60);
+    font-size: 20px;
+    padding: 0 15px;
+    outline: none;
+    font-weight: 500;
+}
+
+.emailAlert {
+    position: absolute;
+    color: #F00;
+    font-size: 20px;
+    font-weight: 700;
+    right:0;
+    bottom: -30px;
+}
+
+.emailButtonsBox {
+    width: 1100px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}

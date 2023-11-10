@@ -1,0 +1,55 @@
+.aboutUsContainer {
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.title {
+    font-size: 64px;
+    color: #30A6E8;
+    font-weight: 600;
+    margin: 0 auto;
+}
+
+.subTitle {
+    font-size: 48px;
+    margin: 50px 0;
+}
+
+.teamContainer {
+    display: flex;
+    width: 785px;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.teamBox img {
+    margin-bottom: 25px;
+}
+
+.teamBox .name {
+    font-size:24px;
+    font-weight: bold;
+}
+
+.teamBox .info {
+    line-height: 1.3em;
+    margin-top: 25px;
+}
+
+.teamBox .info p {
+    font-size : 20px;
+    font-weight: bold;
+}
+
+.teamBox .info ul {
+    margin-top: 5px;
+    list-style: inherit;
+    padding-left: 25px;
+}
+
+.teamBox .info ul li {
+    font-weight: 600;
+}
