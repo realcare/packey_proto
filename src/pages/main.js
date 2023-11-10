@@ -40,10 +40,8 @@ function Main() {
                     <iframe
                         src="https://www.youtube.com/embed/6wJepYuiznU"
                         title="YouTube video player"
-                        frameborder="0"
                         className="youtubePlayer"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowfullscreen
                     ></iframe>
                     <div className="right infoTextBox">
                         <div className="info">
@@ -72,10 +70,8 @@ function Main() {
                     <iframe
                         src="https://www.youtube.com/embed/6wJepYuiznU"
                         title="YouTube video player2"
-                        frameborder="0"
                         className="youtubePlayer"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowfullscreen
                     ></iframe>
                 </div>
             </div>
