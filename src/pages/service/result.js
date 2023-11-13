@@ -16,20 +16,15 @@ const Result = () => {
     const [clickedNum, setClickedNum] = useState(null);
     const [clicked, setClicked] = useState(false);
 
-    useEffect(() => {
-        const getImage = async () => {
-            const imageData = await axios.get(`http://localhost:5432/example_image/${uuid}`).then(res=> res)
-            console.log(imageData)
-            setImage(imageData)
-        }
+    // useEffect(() => {
+    //     const getImage = async () => {
+    //         const imageData = await axios.get(`http://localhost:5432/example_image/${uuid}`).then(res=> res)
+    //         console.log(imageData)
+    //         setImage(imageData)
+    //     }
 
-        getImage()
-    }, [])
-
-
-    useEffect(()=> {
-        console.log(clickedNum)
-    }, [clickedNum])
+    //     getImage()
+    // }, [])
 
     const handleMouseEnter = (el) => {
         if (!clicked) {
@@ -66,7 +61,7 @@ const Result = () => {
         aElement.style.display = "none";
         // const blobFile = window.URL.createObjectURL(new Blob([image]));
         aElement.href = `http://localhost:5432/example_image/${uuid}`;
-        aElement.download = image.filename;
+        aElement.download = "폰트예시이미지.jpg";
         document.body.appendChild(aElement);
         aElement.onClick();
         document.body.removeChild(aElement);
@@ -100,7 +95,7 @@ const Result = () => {
                                         onMouseLeave={() => handleMouseLeave()}
                                         onClick={()=>goToFetch(el)}
                                         key={el}>
-                                            {(clicked >= el) | (hovered >= el) ? <FontAwesomeIcon icon={solidFaStar} size='2xl' color={"#f2eb1c"} />: <FontAwesomeIcon icon={reqularFaStar} size='2xl'/>}
+                                            {(clickedNum >= el) | (hovered >= el) ? <FontAwesomeIcon icon={solidFaStar} size='2xl' color={"#f2eb1c"} />: <FontAwesomeIcon icon={reqularFaStar} size='2xl'/>}
                                             </div>
                                     ))}</div>
                         </div>
