@@ -21,10 +21,6 @@ const Result = () => {
             const imageData = await axios.get(`http://localhost:5432/example_image/${uuid}`).then(res=> res)
             console.log(imageData)
             setImage(imageData)
-            console.log(image_path)
-            
-            
-
         }
 
         getImage()
