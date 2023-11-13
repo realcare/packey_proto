@@ -22,8 +22,9 @@ const Result = () => {
             const {status, image_path} = imageData
             if ( status == "success") {
                 setImage(image_path)
+                console.log(image_path)
             }
-            console.log(image_path)
+            
 
         }
 
