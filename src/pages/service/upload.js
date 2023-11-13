@@ -36,7 +36,7 @@ const Upload = () => {
 
         const res = axios(
             {
-                url: 'http//localhost:8000/request',
+                url: 'http//localhost:8090/request',
                 method: 'POST',
             },
             data
