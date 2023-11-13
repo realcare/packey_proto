@@ -32,33 +32,30 @@ const Upload = () => {
             alert('이미지를 업로드 해주시길 바랍니다.');
             return;
         }
-        console.log(state.email, image);
-
-        // const data = { email: state.email, image_file: image };
         const form = new FormData();
 
         form.append('email', state.email);
         form.append('image_file', image, image.name);
+        
+
         const res = axios(
             {
                 url: 'http://localhost:5432/request',
                 method: 'POST',
                 header: {
-                    Accept: 'application/json',
+                    'accept': 'application/json',
                     'Content-Type': 'multipart/form-data',
                 },
             },
             form
         );
-
         console.log(res);
-
         // if (res) {
         //     navigate('/service/result', {
         //         state: { email: state.email, image: image },
         //     });
         // }
-        // console.log(res);
+       
     };
 
     const handleDragStart = () => {
