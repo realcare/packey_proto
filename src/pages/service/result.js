@@ -18,7 +18,8 @@ const Result = () => {
 
     useEffect(() => {
         const getImage = async () => {
-            const imageData = await axios.get(`http://localhost:5432/example_image/${uuid}`).then(res=> res)
+            const imageData = await axios.get(`http://localhost:5432/example_image/${uuid}`).then(res=> res.data)
+            console.log(imageData)
             const {status, image_path} = imageData
             if ( status == "success") {
                 setImage(image_path)
@@ -53,9 +54,12 @@ const Result = () => {
 
         setClickedNum(el);
         setClicked(true)
-        console.log(el)
+
+        const feedbackData = new FormData();
+        feedbackData.append("feedback", String(el))
+
         const res = await axios.put(`http://localhost:5432/feedback/${uuid}`,
-                                    {feedback : String(el)}, 
+                                    feedbackData, 
                                     { header: {
                                         'accept': 'application/json',
                                         'Content-Type': 'application/x-www-form-urlencoded'
