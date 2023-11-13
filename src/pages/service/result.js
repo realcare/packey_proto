@@ -52,6 +52,7 @@ const Result = () => {
                                     {feedback:el}, 
                                     { header: {
                                         'accept': 'application/json',
+                                        'Content-Type': 'application/x-www-form-urlencoded'
                                     }}).then((res)=> res.data)
         console.log(res)
       };
