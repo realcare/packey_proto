@@ -18,13 +18,11 @@ const Result = () => {
 
     useEffect(() => {
         const getImage = async () => {
-            const imageData = await axios.get(`http://localhost:5432/example_image/${uuid}`).then(res=> res.data)
+            const imageData = await axios.get(`http://localhost:5432/example_image/${uuid}`).then(res=> res)
             console.log(imageData)
-            const {status, image_path} = imageData
-            if ( status == "success") {
-                setImage(image_path)
-                console.log(image_path)
-            }
+            setImage(imageData)
+            console.log(image_path)
+            
             
 
         }
@@ -70,8 +68,8 @@ const Result = () => {
       const download = () => {
         const aElement = document.createElement('a');
         aElement.style.display = "none";
-        const blobFile = window.URL.createObjectURL(new Blob([image]));
-        aElement.href = blobFile;
+        // const blobFile = window.URL.createObjectURL(new Blob([image]));
+        aElement.href = "http://localhost:5432/example_image/${uuid}";
         aElement.download = image.filename;
         document.body.appendChild(aElement);
         aElement.onClick();
@@ -93,7 +91,7 @@ const Result = () => {
                                 <p>Inference Time </p>
                                 <p>1.2s</p>
                             </div>
-                            <img src={image} alt="preview" />
+                            <img src={`http://localhost:5432/example_image/${uuid}`} alt="preview" />
                         </div>
                         <div className="resultItemBtnBox">
                             <button onClick={download}>Download</button>
