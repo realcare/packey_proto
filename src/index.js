@@ -21,6 +21,7 @@ root.render(
                 <Route path="/service/rule" element={<Rule />} />
                 <Route path="/service/upload" element={<Upload />} />
                 <Route path="/service/result" element={<Result />} />
+                {/* <Route path="/" element={<Result />} /> */}
             </Routes>
         </BrowserRouter>
     </React.StrictMode>

@@ -36,7 +36,7 @@
 }
 
 .resultContainer .resultItemContainer .resultItemBox .resultItem {
-    margin-bottom: 50px;
+    margin-bottom: 30px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -74,4 +74,23 @@
     font-weight: 600;
     font-size: 18px;
     border-radius: 10px;
+}
+
+.ratingContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.ratingContainer p {
+    font-size: 25px;
+    font-weight: bolder;
+    padding-right: 10px;
+}
+
+.starBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

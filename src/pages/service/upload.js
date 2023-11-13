@@ -18,7 +18,7 @@ const Upload = () => {
     const [intervalId, setIntervalId] = useState("");
 
     useEffect(()=> {
-        if(loadingText == "Complete") {
+        if(loadingText == "Completed") {
             setTimeout(() => {
                 clearInterval(intervalId)
                 setLoading(false)
@@ -61,10 +61,10 @@ const Upload = () => {
         const res = await axios.post(`${url}/request`, form, { header: {
             'accept': 'application/json',
             'Content-Type': 'multipart/form-data',
-        },}).then((res)=> JSON.parse(res.data));
+        }}).then((res)=> res.data);
 
         const {status, uuid} = res;
-        
+
         if (status != "success") {
            alert("이미지 업로드에 실패하였습니다.")
            setLoading(false)
@@ -77,16 +77,22 @@ const Upload = () => {
 
         if(loadingMessage === "processing") {
             console.log("processing")
-            const id = setInterval(() => getStatus(url,uuid), 3000)
+            const id = setInterval(() => getStatus(url,uuid), 10000)
             setIntervalId(id)
         }
        
     };
 
     const getStatus = async (url,uuid) => {
-        const loadingTextRes = await axios.get(`${url}/status/${uuid}`).then((res)=> JSON.parse(res.data))
+        const loadingTextRes = await axios.get(`${url}/status/${uuid}`).then((res)=> res.data)
         
-        const {message} = loadingTextRes;
+        const {status, message} = loadingTextRes;
+
+        if (status == "fail") {
+            alert("이미지 업로드에 실패하였습니다.")
+            setLoading(false)
+            return
+        }
 
         setLoadingText(message);
 
