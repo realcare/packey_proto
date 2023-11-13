@@ -93,7 +93,7 @@ const Result = () => {
                                 <p>Inference Time </p>
                                 <p>1.2s</p>
                             </div>
-                            <img src={image} alt="preview" />
+                            <img src={image.path} alt="preview" />
                         </div>
                         <div className="resultItemBtnBox">
                             <button onClick={download}>Download</button>
