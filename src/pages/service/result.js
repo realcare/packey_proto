@@ -18,11 +18,16 @@ const Result = () => {
 
     useEffect(() => {
         const getImage = async () => {
-            // const imageData = await axios.get(`http://localhost:5432/example_image/${uuid}`).then(res=> res)
-            // if(imageData.)
-            // setImage(imageData)
+            const imageData = await axios.get(`http://localhost:5432/example_image/${uuid}`).then(res=> res)
+            const {status, image_path} = imageData
+            if ( status == "success") {
+                setImage(image_path)
+            }
+            console.log(image_path)
+
         }
-        console.log(uuid)
+
+        getImage()
     }, [])
 
 
