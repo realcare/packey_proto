@@ -78,10 +78,10 @@ const Result = () => {
                     <div className="resultItemBox">
                         <p className="resultItemTitle">폰트 예시 이미지 1</p>
                         <div className="resultItem">
-                            <div className="resultItemTime">
+                            {/* <div className="resultItemTime">
                                 <p>Inference Time </p>
                                 <p>1.2s</p>
-                            </div>
+                            </div> */}
                             <img src={`http://localhost:5432/example_image/${uuid}`} alt="preview" />
                         </div>
                         <div className="resultItemBtnBox">
