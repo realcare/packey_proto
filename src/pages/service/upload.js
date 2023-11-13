@@ -35,7 +35,7 @@ const Upload = () => {
 
         // const data = { email: state.email, image_file: image };
         const form = new FormData();
-
+        console.log(image);
         form.append('email', state.email);
         form.append('image_file', image);
         const res = axios(
@@ -152,7 +152,7 @@ const Upload = () => {
                     <ButtonsLayout prev={prev} next={next} />
                 </div>
             </ServiceLayout>
-            <Loading />
+            {/* <Loading /> */}
         </>
     );
 };
