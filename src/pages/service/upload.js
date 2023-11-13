@@ -3,6 +3,7 @@ import ServiceLayout from '../../components/service/serviceLayout';
 import ButtonsLayout from '../../components/service/buttonsLayout';
 import { useEffect, useState } from 'react';
 import '../../css/pages/service/upload.css';
+import axios from 'axios';
 
 const Upload = () => {
     const navigate = useNavigate();
@@ -25,15 +26,30 @@ const Upload = () => {
         });
     };
 
-    const next = () => {
+    const next = async () => {
         if (!image) {
             alert('이미지를 업로드 해주시길 바랍니다.');
             return;
         }
 
-        navigate('/service/result', {
-            state: { email: state.email },
-        });
+        const data = { email: state.email, image_file: image };
+
+        const res = axios(
+            {
+                url: 'http//localhost:8000/request',
+                method: 'POST',
+            },
+            data
+        );
+
+        console.log(res);
+
+        // if (res) {
+        //     navigate('/service/result', {
+        //         state: { email: state.email, image: image },
+        //     });
+        // }
+        // console.log(res);
     };
 
     const handleDragStart = () => {
