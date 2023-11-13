@@ -33,14 +33,17 @@ const Upload = () => {
             return;
         }
 
-        const data = { email: state.email, image_file: image };
+        // const data = { email: state.email, image_file: image };
+        const form = new FormData();
 
+        form.append('email', state.email);
+        form.append('image_file', image);
         const res = axios(
             {
                 url: 'http://localhost:5432/request',
                 method: 'POST',
             },
-            data
+            form
         );
 
         console.log(res);
