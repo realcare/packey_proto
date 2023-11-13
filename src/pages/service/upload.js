@@ -1,4 +1,4 @@
-import { useLocation, useNavigate } from 'react-router-dom';
+import { json, useLocation, useNavigate } from 'react-router-dom';
 import ServiceLayout from '../../components/service/serviceLayout';
 import ButtonsLayout from '../../components/service/buttonsLayout';
 import { useEffect, useState } from 'react';
@@ -12,6 +12,24 @@ const Upload = () => {
     const [isActive, setActive] = useState(false);
     const [image, setImage] = useState();
     const [preview, setPreview] = useState();
+    const [loading, setLoading] = useState(false);
+    const [loadingText, setLoadingText] = useState("Loading");
+    const [id, setID] = useState("");
+    const [intervalId, setIntervalId] = useState("");
+
+    useEffect(()=> {
+        console.log(loadingText)
+        if(loadingText == "Complete") {
+            setTimeout(() => {
+                clearInterval(intervalId)
+                setLoading(false)
+                navigate('/service/result', {
+                    state: { email: state.email, uuid: id},
+                });
+            }, 3000)
+            
+        }
+    }, [loadingText])
 
     useEffect(() => {
         if (!state || !state.email) {
@@ -32,31 +50,61 @@ const Upload = () => {
             alert('이미지를 업로드 해주시길 바랍니다.');
             return;
         }
-        const form = new FormData();
 
+        setLoading(true)
+
+        const form = new FormData();
         form.append('email', state.email);
         form.append('image_file', image, image.name);
         
+        const url = "http://localhost:5432"
 
-        const res = axios(
-            {
-                url: 'http://localhost:5432/request',
-                method: 'POST',
-                header: {
-                    'accept': 'application/json',
-                    'Content-Type': 'multipart/form-data',
-                },
-            },
-            form
-        );
-        console.log(res);
-        // if (res) {
-        //     navigate('/service/result', {
-        //         state: { email: state.email, image: image },
-        //     });
+        // const res = await axios.post(`${url}/request`, form, { header: {
+        //     'accept': 'application/json',
+        //     'Content-Type': 'multipart/form-data',
+        // },}).then((res)=> JSON.parse(res.data));
+
+        // const {status, uuid} = res;
+        
+        // if (status != "success") {
+        //    alert("이미지 업로드에 실패하였습니다.")
+        //    setLoading(false)
+        //     return
         // }
+
+        const uuid = '12312412124'
+
+        setID(uuid)
+
+        const loadingMessage = await getStatus(url,uuid).then((res)=> res)
+        console.log("message" ,loadingMessage)
+        if(loadingMessage === "processing") {
+            console.log("프로세싱중")
+        }
+        const id = setInterval(() => getStatus(url,uuid), 3000)
+        setIntervalId(id)
+        // setLoading(false)
+        // navigate('/service/result', {
+        //     state: { email: state.email},
+        // });
        
     };
+
+    const getStatus = async (url,uuid) => {
+        // const loadingTextRes = await axios.get(`${url}/status/${uuid}`).then((res)=> JSON.parse(res.data))
+        
+        // const {message} = loadingTextRes;
+
+        // setLoadingText(message);
+
+        const message = ["processing", "processing","processing","processing","processing","processing", "Complete"]
+
+        const num = parseInt(Math.random() * message.length)
+    
+        setLoadingText(message[num])
+        console.log(message[num])
+        return message[num]
+    }
 
     const handleDragStart = () => {
         setActive(true);
@@ -154,7 +202,8 @@ const Upload = () => {
                     <ButtonsLayout prev={prev} next={next} />
                 </div>
             </ServiceLayout>
-            {/* <Loading /> */}
+            {loading == true ?  <Loading text={loadingText == "" ? "loading" : loadingText} /> : <></> }
+           
         </>
     );
 };
