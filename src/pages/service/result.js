@@ -48,7 +48,7 @@ const Result = () => {
         setClickedNum(el);
         setClicked(true)
 
-        const res = await axios.post(`http://localhost:5432/feedback/${uuid}`,
+        const res = await axios.put(`http://localhost:5432/feedback/${uuid}`,
                                     {feedback:el}, 
                                     { header: {
                                         'accept': 'application/json',
