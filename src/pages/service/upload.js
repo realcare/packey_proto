@@ -18,7 +18,6 @@ const Upload = () => {
     const [intervalId, setIntervalId] = useState("");
 
     useEffect(()=> {
-        console.log(loadingText)
         if(loadingText == "Complete") {
             setTimeout(() => {
                 clearInterval(intervalId)
@@ -59,52 +58,39 @@ const Upload = () => {
         
         const url = "http://localhost:5432"
 
-        // const res = await axios.post(`${url}/request`, form, { header: {
-        //     'accept': 'application/json',
-        //     'Content-Type': 'multipart/form-data',
-        // },}).then((res)=> JSON.parse(res.data));
+        const res = await axios.post(`${url}/request`, form, { header: {
+            'accept': 'application/json',
+            'Content-Type': 'multipart/form-data',
+        },}).then((res)=> JSON.parse(res.data));
 
-        // const {status, uuid} = res;
+        const {status, uuid} = res;
         
-        // if (status != "success") {
-        //    alert("이미지 업로드에 실패하였습니다.")
-        //    setLoading(false)
-        //     return
-        // }
-
-        const uuid = '12312412124'
+        if (status != "success") {
+           alert("이미지 업로드에 실패하였습니다.")
+           setLoading(false)
+            return
+        }
 
         setID(uuid)
 
         const loadingMessage = await getStatus(url,uuid).then((res)=> res)
-        console.log("message" ,loadingMessage)
+
         if(loadingMessage === "processing") {
-            console.log("프로세싱중")
+            console.log("processing")
             const id = setInterval(() => getStatus(url,uuid), 3000)
             setIntervalId(id)
         }
        
-        // setLoading(false)
-        // navigate('/service/result', {
-        //     state: { email: state.email},
-        // });
-       
     };
 
     const getStatus = async (url,uuid) => {
-        // const loadingTextRes = await axios.get(`${url}/status/${uuid}`).then((res)=> JSON.parse(res.data))
+        const loadingTextRes = await axios.get(`${url}/status/${uuid}`).then((res)=> JSON.parse(res.data))
         
-        // const {message} = loadingTextRes;
+        const {message} = loadingTextRes;
 
-        // setLoadingText(message);
+        setLoadingText(message);
 
-        const message = ["processing", "processing","processing","processing","processing","processing", "Complete"]
-
-        const num = parseInt(Math.random() * message.length)
-    
-        setLoadingText(message[num])
-        console.log(message[num])
-        return message[num]
+        return message
     }
 
     const handleDragStart = () => {
