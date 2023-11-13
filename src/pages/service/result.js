@@ -69,7 +69,7 @@ const Result = () => {
         const aElement = document.createElement('a');
         aElement.style.display = "none";
         // const blobFile = window.URL.createObjectURL(new Blob([image]));
-        aElement.href = "http://localhost:5432/example_image/${uuid}";
+        aElement.href = `http://localhost:5432/example_image/${uuid}`;
         aElement.download = image.filename;
         document.body.appendChild(aElement);
         aElement.onClick();
