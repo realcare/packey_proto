@@ -64,8 +64,19 @@ const Result = () => {
                                         'accept': 'application/json',
                                         'Content-Type': 'application/x-www-form-urlencoded'
                                     }}).then((res)=> res.data)
-        console.log(res)
+        
       };
+
+      const download = () => {
+        const aElement = document.createElement('a');
+        aElement.style.display = "none";
+        const blobFile = window.URL.createObjectURL(new Blob([image]));
+        aElement.href = blobFile;
+        aElement.download = "폰트예시이미지.jpg";
+        document.appendChild(aElement);
+        aElement.onClick();
+        document.removeChild(aElement);
+      }
 
     return (
         <ServiceLayout step={4}>
@@ -82,10 +93,10 @@ const Result = () => {
                                 <p>Inference Time </p>
                                 <p>1.2s</p>
                             </div>
-                            <img src="../preview.png" alt="preview" />
+                            <img src={image} alt="preview" />
                         </div>
                         <div className="resultItemBtnBox">
-                            <button>Download</button>
+                            <button onClick={download}>Download</button>
                         </div>
                         <div className="ratingContainer">
                             <p>사용자 평점 :</p>
