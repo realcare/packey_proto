@@ -37,7 +37,6 @@ const Upload = () => {
     };
 
     const handleDragStart = () => {
-        console.log('drag true');
         setActive(true);
     };
 
@@ -47,7 +46,7 @@ const Upload = () => {
 
     const handleDrop = (event) => {
         event.preventDefault();
-        console.log(event);
+
         const reader = new FileReader();
 
         const file = event.dataTransfer.files[0];
@@ -66,6 +65,23 @@ const Upload = () => {
     const handleDropOver = (event) => {
         event.preventDefault();
     };
+
+    const handleImageChangle = (event) => {
+        event.preventDefault();
+
+        const reader = new FileReader();
+
+        const file = event.target.files[0];
+        if (file) {
+            reader.readAsDataURL(file);
+            setImage(file);
+
+            reader.onload = (e) => {
+                setPreview(e.target.result);
+            };
+        }
+    };
+
     return (
         <ServiceLayout step={3}>
             <div className="uploadContainer">
@@ -88,6 +104,7 @@ const Upload = () => {
                     onDragLeave={handleDragEnd}
                     onDrop={handleDrop}
                     onDragOver={handleDropOver}
+                    onChange={handleImageChangle}
                 >
                     {!preview ? (
                         <>
