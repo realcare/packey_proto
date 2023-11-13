@@ -73,9 +73,9 @@ const Result = () => {
         const blobFile = window.URL.createObjectURL(new Blob([image]));
         aElement.href = blobFile;
         aElement.download = "폰트예시이미지.jpg";
-        document.appendChild(aElement);
+        document.body.appendChild(aElement);
         aElement.onClick();
-        document.removeChild(aElement);
+        document.body.removeChild(aElement);
       }
 
     return (
