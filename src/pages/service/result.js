@@ -73,9 +73,9 @@ const Result = () => {
         const blobFile = window.URL.createObjectURL(new Blob([image]));
         aElement.href = blobFile;
         aElement.download = "폰트예시이미지.jpg";
-        document.appendChild(aElement);
+        document.body.appendChild(aElement);
         aElement.onClick();
-        document.removeChild(aElement);
+        document.body.removeChild(aElement);
       }
 
     return (
@@ -93,7 +93,7 @@ const Result = () => {
                                 <p>Inference Time </p>
                                 <p>1.2s</p>
                             </div>
-                            <img src={image} alt="preview" />
+                            <img src={image.path} alt="preview" />
                         </div>
                         <div className="resultItemBtnBox">
                             <button onClick={download}>Download</button>
