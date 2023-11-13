@@ -1,4 +1,4 @@
-import { json, useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import ServiceLayout from '../../components/service/serviceLayout';
 import ButtonsLayout from '../../components/service/buttonsLayout';
 import { useEffect, useState } from 'react';
@@ -18,7 +18,7 @@ const Upload = () => {
     const [intervalId, setIntervalId] = useState("");
 
     useEffect(()=> {
-        if(loadingText == "Completed") {
+        if(loadingText === "Completed") {
             setTimeout(() => {
                 clearInterval(intervalId)
                 setLoading(false)
@@ -28,7 +28,7 @@ const Upload = () => {
             }, 2000)
             
         }
-    }, [loadingText])
+    }, [loadingText, id, intervalId, navigate, state.email])
 
     useEffect(() => {
         if (!state || !state.email) {
@@ -65,7 +65,7 @@ const Upload = () => {
 
         const {status, uuid} = res;
 
-        if (status != "success") {
+        if (status !== "success") {
            alert("이미지 업로드에 실패하였습니다.")
            setLoading(false)
             return
@@ -88,7 +88,7 @@ const Upload = () => {
         
         const {status, message} = loadingTextRes;
 
-        if (status == "fail") {
+        if (status === "fail") {
             alert("이미지 업로드에 실패하였습니다.")
             setLoading(false)
             return
@@ -195,7 +195,7 @@ const Upload = () => {
                     <ButtonsLayout prev={prev} next={next} />
                 </div>
             </ServiceLayout>
-            {loading == true ?  <Loading text={loadingText == "" ? "loading" : loadingText} /> : <></> }
+            {loading === true &&  <Loading text={loadingText === "" ? "loading" : loadingText} />}
            
         </>
     );

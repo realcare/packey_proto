@@ -2,7 +2,7 @@ import { useLocation } from 'react-router-dom';
 import ServiceLayout from '../../components/service/serviceLayout';
 import '../../css/pages/service/result.css';
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar as reqularFaStar } from '@fortawesome/free-regular-svg-icons';
 import { faStar as solidFaStar } from '@fortawesome/free-solid-svg-icons';
@@ -10,8 +10,7 @@ import { faStar as solidFaStar } from '@fortawesome/free-solid-svg-icons';
 const Result = () => {
     const { state } = useLocation();
     const { uuid} = state;
-    
-    const [image, setImage] = useState();
+
     const [hovered, setHovered] = useState(null);
     const [clickedNum, setClickedNum] = useState(null);
     const [clicked, setClicked] = useState(false);
@@ -47,12 +46,12 @@ const Result = () => {
         const feedbackData = new FormData();
         feedbackData.append("feedback", String(el))
 
-        const res = await axios.put(`http://localhost:5432/feedback/${uuid}`,
-                                    feedbackData, 
-                                    { header: {
-                                        'accept': 'application/json',
-                                        'Content-Type': 'application/x-www-form-urlencoded'
-                                    }}).then((res)=> res.data)
+        await axios.put(`http://localhost:5432/feedback/${uuid}`,
+                        feedbackData, 
+                        { header: {
+                            'accept': 'application/json',
+                            'Content-Type': 'application/x-www-form-urlencoded'
+                        }}).then((res)=> res.data)
         
       };
 
@@ -76,7 +75,7 @@ const Result = () => {
                 </p>
                 <div className="resultItemContainer">
                     <div className="resultItemBox">
-                        <p className="resultItemTitle">폰트 예시 이미지 1</p>
+                        <p className="resultItemTitle">폰트 예시 이미지</p>
                         <div className="resultItem">
                             {/* <div className="resultItemTime">
                                 <p>Inference Time </p>
