@@ -47,9 +47,9 @@ const Result = () => {
 
         setClickedNum(el);
         setClicked(true)
-
+        console.log(el)
         const res = await axios.put(`http://localhost:5432/feedback/${uuid}`,
-                                    {feedback:el}, 
+                                    {feedback : String(el)}, 
                                     { header: {
                                         'accept': 'application/json',
                                         'Content-Type': 'application/x-www-form-urlencoded'
