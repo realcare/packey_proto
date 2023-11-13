@@ -38,7 +38,7 @@ const Upload = () => {
         const form = new FormData();
 
         form.append('email', state.email);
-        form.append('image_file', image);
+        form.append('image_file', image, image.name);
         const res = axios(
             {
                 url: 'http://localhost:5432/request',
