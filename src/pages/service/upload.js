@@ -4,6 +4,7 @@ import ButtonsLayout from '../../components/service/buttonsLayout';
 import { useEffect, useState } from 'react';
 import '../../css/pages/service/upload.css';
 import axios from 'axios';
+import Loading from '../../components/service/loading';
 
 const Upload = () => {
     const navigate = useNavigate();
@@ -36,7 +37,7 @@ const Upload = () => {
 
         const res = axios(
             {
-                url: 'http//localhost:8090/request',
+                url: 'http//localhost:5432/request',
                 method: 'POST',
             },
             data
@@ -99,50 +100,57 @@ const Upload = () => {
     };
 
     return (
-        <ServiceLayout step={3}>
-            <div className="uploadContainer">
-                <div className="uploadInfoBox">
-                    <div className="uploadInfoTitle">
-                        <p>이미지 업로드하기</p>
+        <>
+            <ServiceLayout step={3}>
+                <div className="uploadContainer">
+                    <div className="uploadInfoBox">
+                        <div className="uploadInfoTitle">
+                            <p>이미지 업로드하기</p>
+                        </div>
+                        <div className="uploadInfoSub">
+                            <p>
+                                <span>반드시</span> 양식에 맞게 작성된 손글씨를
+                            </p>
+                            <p>촬영 후 업로드 해주세요.</p>
+                        </div>
                     </div>
-                    <div className="uploadInfoSub">
-                        <p>
-                            <span>반드시</span> 양식에 맞게 작성된 손글씨를
-                        </p>
-                        <p>촬영 후 업로드 해주세요.</p>
-                    </div>
-                </div>
-                <label
-                    className={`uploadImageContainer${
-                        isActive ? ' active' : ''
-                    }`}
-                    onDragEnter={handleDragStart}
-                    onDragLeave={handleDragEnd}
-                    onDrop={handleDrop}
-                    onDragOver={handleDropOver}
-                    onChange={handleImageChangle}
-                >
-                    {!preview ? (
-                        <>
-                            <input
-                                type="file"
-                                accept=".jpg, .png, .jpeg"
-                                className="uploadInput"
+                    <label
+                        className={`uploadImageContainer${
+                            isActive ? ' active' : ''
+                        }`}
+                        onDragEnter={handleDragStart}
+                        onDragLeave={handleDragEnd}
+                        onDrop={handleDrop}
+                        onDragOver={handleDropOver}
+                        onChange={handleImageChangle}
+                    >
+                        {!preview ? (
+                            <>
+                                <input
+                                    type="file"
+                                    accept=".jpg, .png, .jpeg"
+                                    className="uploadInput"
+                                />
+                                <div className="uploadBox">
+                                    <img src="../upload.png" alt="upload" />
+                                    <p>업로드 하기</p>
+                                </div>
+                            </>
+                        ) : (
+                            <img
+                                className="preview"
+                                src={preview}
+                                alt="preview"
                             />
-                            <div className="uploadBox">
-                                <img src="../upload.png" alt="upload" />
-                                <p>업로드 하기</p>
-                            </div>
-                        </>
-                    ) : (
-                        <img className="preview" src={preview} alt="preview" />
-                    )}
-                </label>
-            </div>
-            <div className="uploadBtnBox">
-                <ButtonsLayout prev={prev} next={next} />
-            </div>
-        </ServiceLayout>
+                        )}
+                    </label>
+                </div>
+                <div className="uploadBtnBox">
+                    <ButtonsLayout prev={prev} next={next} />
+                </div>
+            </ServiceLayout>
+            <Loading />
+        </>
     );
 };
 
