@@ -63,7 +63,7 @@ const Result = () => {
         aElement.href = `http://localhost:5432/example_image/${uuid}`;
         aElement.download = "폰트예시이미지.jpg";
         document.body.appendChild(aElement);
-        aElement.onClick();
+        aElement.click();
         document.body.removeChild(aElement);
       }
 
