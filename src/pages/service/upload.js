@@ -26,7 +26,7 @@ const Upload = () => {
                 navigate('/service/result', {
                     state: { email: state.email, uuid: id},
                 });
-            }, 3000)
+            }, 2000)
             
         }
     }, [loadingText])
@@ -80,9 +80,10 @@ const Upload = () => {
         console.log("message" ,loadingMessage)
         if(loadingMessage === "processing") {
             console.log("프로세싱중")
+            const id = setInterval(() => getStatus(url,uuid), 3000)
+            setIntervalId(id)
         }
-        const id = setInterval(() => getStatus(url,uuid), 3000)
-        setIntervalId(id)
+       
         // setLoading(false)
         // navigate('/service/result', {
         //     state: { email: state.email},
